@@ -1,0 +1,172 @@
+% Sample Dissertation, Thesis, or Document %
+%            for use with the              %
+%  University of Arizona Thesis Class,     %
+%               uathesis.cls               %
+%------------------------------------------%
+
+% We'll use the uathesis document class (duh).  The uncommented line
+% below will produce a Dissertation, the others would produce a Thesis
+% or a Document.  There are other options available to you like turning
+% on the copyright statement and replacing the year on the title page
+% with a "generated on" stamp (handy for early drafts).  To find out
+% what the available options are, take a look into the uathesis.cls
+% file and look for the \DeclareOption commands near the top of that
+% file.
+% There are five copyright options.  Copyright, no copyright, and three
+% different Creative Commons licences.  Use the one you want (If you go
+% Creative Commons, I (DM) think the CC-BY-ND makes the most sense)  See
+% uathesis.cls for the reason why the non-commercial licenses are not
+% included.
+\documentclass[dissertation]{uathesis}
+%\documentclass[dissertation,copyright]{uathesis}
+%\documentclass[dissertation,CC-BY]{uathesis}
+%\documentclass[dissertation,CC-BY-SA]{uathesis}
+%\documentclass[dissertation,CC-BY-ND]{uathesis}
+%\documentclass[thesis]{uathesis}
+%\documentclass[document]{uathesis}
+
+% Package Usage
+% These are the packages that we need
+\usepackage{graphicx}
+\usepackage[square,numbers]{natbib}
+\usepackage[titles]{tocloft}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{setspace}
+\usepackage{rotating}
+\renewcommand*\cftfigpresnum{Figure~}
+\setlength{\cftfignumwidth}{5.5em}
+\renewcommand\cftchapfont{\normalfont}
+\renewcommand\cftchappagefont{\normalfont}
+\renewcommand\cftchapleader{\cftdotfill{\cftsecdotsep}}
+
+\newcommand\alphaNa{\alpha_\textrm{Na}}
+\newcommand\alphaK{\alpha_\textrm{K}}
+\newcommand\alphaRb{\alpha_\textrm{Rb}}
+\newcommand\alphaCs{\alpha_\textrm{Cs}}
+\newcommand\lambdaZero{\lambda_\textrm{zero}}
+
+\newcommand*{\etal}{\emph{et al.}~}
+
+\newcommand{\tensorPol}{\overset{\leftrightarrow}{\alpha}}
+
+			% natbib is available on most systems, and is
+					% terribly handy.
+					% If you want to use a different Bibliography package, 
+					% you should be able to, just change this
+					% and the \bibliographystyle command below.  Be warned
+					% that you may need to do a little hacking to get
+					% the REFERENCES item to show up in your TOC.
+
+% Compatibility with the AASTEX package 
+% of the American Astronomical Society.
+%\usepackage{deluxetable}		% Allows use of AASTEX deluxe tables
+%\usepackage{aastex_hack}		% Allows other AASTEX functionality.
+
+% These are other packages that you might find useful.
+% For controlling the fonts, see
+% http://www.math.uiuc.edu/~hartke/computer/latex/survey/survey.html
+% The following is a nice font set:
+%\usepackage{mathtime}			% Times for letters; Belleek math.
+%
+\usepackage{amsmath}			% AMS Math (advanced math typesetting)
+%\usepackage{lscape}			% Used for making fitting large tables in by putting them landscape
+%\usepackage{refs}			
+%
+% If you are using hyper-ref (recommended), this command must go after all 
+% other package inclusions (from the hyperref package documentation).
+% The purpose of hyperref is to make the PDF created extensively
+% cross-referenced.
+\usepackage[pdftex,bookmarks,colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+
+% Set up some values
+\completetitle{Polarizability and magic-zero wavelength measurements of alkali atoms}
+\fullname{William Frederick Holmgren}			% Grad college wants your full name here.
+\degreename{Doctor of Philosophy}	% Title of your degree.
+
+\begin{document}
+\newcommand{\beq}{\begin{eqnarray}}
+\newcommand{\eeq}{\end{eqnarray}}
+\newcommand{\ii}{{\mathrm i}}
+
+% Set up the title page
+\maketitlepage
+{DEPARTMENT OF PHYSICS}	% Title of your department.
+{2013}							
+
+% Insert the approval form.  Note that for electronic submission
+% of your Ph. D. dissertation, you must bring *two* copies of the
+% approval page to your final defense.  These must be signed by
+% the committee.  Make two photocopies: one for Pam and the other
+% for your records.  Then, bring the two signed originals to the
+% graduate college when you submit the final version of the
+% dissertation to the University of Arizona.
+\approval
+{2 April 2013}		% Defense Date	
+{Alexander D. Cronin}	% Dissertation Director
+{Alexander D. Cronin}	% 1st committee member
+{Arvinder Sandhu}		% 2nd committee member
+{Charles S. Stafford}		% 3rd committee member
+{Brian P. Anderson}		% 4th committee member
+
+% Include the ``Statement by Author'' for Dissertations
+\statementbyauthor
+% If this is a Thesis, use the following form, with your thesis director's
+% name and title in the square brackets like so (you should also omit the 
+% approval form insertion above):
+%\statementbyauthor[Jane M. Doe\\Professor of Chemistry]
+
+% Include the ``Acknowledgements''
+%\incacknowledgements{acknowledgements}
+
+% Include the ``Dedication''
+%\incdedication{dedication}
+
+% Create a ``Table of Contents''
+\tableofcontents
+
+% Create a ``List of Figures''
+\listoffigures
+
+% Create a ``List of Tables''
+\listoftables
+
+% Include the ``Abstract''
+\incabstract{abstract}
+
+% Include the various chapters
+\include{Introduction}
+\include{thesisBriefChapter}
+\include{staticPolChapter}
+\include{choppersChapter}
+\include{mzwChapter}
+\include{alphaSr}
+\include{dimers}
+\include{conclusions}
+
+
+% Include the various appendices
+\appendix
+\include{appendixaPolPRA}
+\include{appendixbNJP}
+\include{appendixcMZWPRL}
+\include{publications}
+
+
+% Switch the spacing to single-spaced for the references
+\renewcommand{\baselinestretch}{1}		% chaning the value
+\small\normalsize						% switch size to make the value take
+
+% Create the References list
+\bibliographystyle{apsrevNoURL}
+\addcontentsline{toc}{chapter}{REFERENCES}
+\bibliography{MasterBibliography}
+
+\renewcommand{\baselinestretch}{1.4}		% chaning the value
+\small\normalsize						% switch size to make the value take
+
+
+\end{document}
